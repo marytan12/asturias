@@ -16,8 +16,31 @@
         body { font-family: 'Inter', sans-serif; }
     </style>
 </head>
-<body class="bg-slate-900">
+<body class="bg-slate-900" oncontextmenu="return false;">
     <div id="root"></div>
+
+    <script>
+        // Mensaje personalizado para Guille
+        const antiGuilleMessage = "Guille no me lo robes";
+
+        // Bloquea el clic derecho
+        document.addEventListener('contextmenu', event => {
+            event.preventDefault();
+            alert(antiGuilleMessage);
+        });
+
+        // Detecta F12, Ctrl+Shift+I, Ctrl+U
+        document.addEventListener('keydown', function (e) {
+            if (
+                e.key === "F12" ||
+                (e.ctrlKey && e.shiftKey && e.key === "I") || 
+                (e.ctrlKey && e.key === "u")
+            ) {
+                e.preventDefault();
+                alert(antiGuilleMessage);
+            }
+        });
+    </script>
 
 
     <script type="text/babel">
@@ -58,7 +81,7 @@
 
         const HistoryLog = ({ history }) => (
             <div className="mt-12 bg-slate-800 rounded-xl p-6 shadow-lg">
-                <h3 className="text-2xl font-bold text-white mb-6">Registro</h3>
+                <h3 className="text-2xl font-bold text-white mb-6">Registro de Acciones</h3>
                 <div className="space-y-4 max-h-[400px] overflow-y-auto pr-2">
                     {history.length === 0 ? (<p className="text-slate-400 text-center py-4">Aún no ha pasado nada...</p>) : (
                         history.map(item => (
