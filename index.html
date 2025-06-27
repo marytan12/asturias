@@ -99,8 +99,6 @@
                                 </div>
                                 <div className="text-right text-xs text-slate-500 mt-2">
                                     <span>{new Date(item.created_at).toLocaleString('es-ES')}</span>
-                                    <span className="mx-2">|</span>
-                                    <span>IP: {item.ip_address || 'N/A'}</span>
                                 </div>
                             </div>
                         ))
@@ -271,7 +269,6 @@
                     console.error('Error al actualizar la puntuación:', error);
                     setDbError("Error al actualizar la puntuación: " + error.message);
                 } else {
-                    // **FIX**: Recargar los datos manualmente después de la acción para una actualización instantánea
                     await fetchAllData();
                 }
             };
